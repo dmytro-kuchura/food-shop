@@ -1,0 +1,50 @@
+version: '3.8'
+
+name: food_shop
+
+services:
+  web:
+    container_name: food_shop_nginx
+    image: nginx:1.24
+    volumes:
+      - './.docker/nginx:/etc/nginx/conf.d/'
+      - './src/:/var/www/html'
+    ports:
+      - '80:80'
+    depends_on:
+      - php
+      - db
+
+  php: &app-podcasts-service
+    container_name: food_shop_php
+    build:
+      args:
+        user: podcast
+        uid: 1000
+      context: .docker/php
+    volumes:
+      - './.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini'
+      - './.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini'
+      - './src/:/var/www/html'
+
+  scheduler:
+    <<: *app-podcasts-service
+    container_name: food_shop_scheduler
+    restart: always
+    command: /scheduler/scheduler.sh
+
+  db:
+    container_name: food_shop_db
+    image: 'postgres:14.8'
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'local-database:/var/lib/postgresql/data'
+
+volumes:
+  local-database:
+    driver: local
