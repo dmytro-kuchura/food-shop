@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,12 @@ Route::get('/register', [SiteController::class, 'index'])->name('register');
 Route::prefix('news')->group(function () {
     Route::get('/', [NewsController::class, 'index'])->name('news.index');
     Route::get('/{alias}', [NewsController::class, 'inner'])->name('news.inner');
+});
+
+Route::prefix('shop')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+    Route::get('/{category}', [ShopController::class, 'category'])->name('shop.category');
+    Route::get('/{alias}/p{id}', [ShopController::class, 'item'])->name('shop.item');
 });
 
 Route::get('/wishlist', 'WishlistController@wishlist')->name('wishlist');
