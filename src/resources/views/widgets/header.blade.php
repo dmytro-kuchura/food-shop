@@ -93,13 +93,13 @@
                                                 </form>
                                             @endguest
                                         </li>
-                                        {{--                                        <li>--}}
-                                        {{--                                            <span class="dropdown-title">Язык :</span>--}}
-                                        {{--                                            <ul>--}}
-                                        {{--                                                <li><a class="active" href="javascript:void(0)">Русский</a></li>--}}
-                                        {{--                                                <li><a href="javascript:void(0)">Украинский</a></li>--}}
-                                        {{--                                            </ul>--}}
-                                        {{--                                        </li>--}}
+                                        {{--<li>--}}
+                                        {{--    <span class="dropdown-title">Язык :</span>--}}
+                                        {{--    <ul>--}}
+                                        {{--        <li><a class="active" href="javascript:void(0)">Русский</a></li>--}}
+                                        {{--        <li><a href="javascript:void(0)">Украинский</a></li>--}}
+                                        {{--    </ul>--}}
+                                        {{--</li>--}}
                                     </ul>
                                 </div>
                             </li>
