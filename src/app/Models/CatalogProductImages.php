@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $link
  * @property int $product_id
- * @property int $status
+ * @property string $status
  * @property string $created_at
  * @property string $updated_at
  */
@@ -19,7 +19,7 @@ class CatalogProductImages extends Model
      *
      * @var string
      */
-    protected $table = 'product_images';
+    protected $table = 'catalog_product_images';
 
     /**
      * Using timestamp

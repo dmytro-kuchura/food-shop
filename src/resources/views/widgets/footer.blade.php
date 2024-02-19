@@ -99,12 +99,12 @@
                             <ul class="payment_icon">
                                 <li class="visa">
                                     <a href="javascript:void(0)">
-                                        <img src="/images/pay1.png" alt="Visa">
+                                        <img src="{{ asset('images/pay1.png') }}" alt="Visa">
                                     </a>
                                 </li>
                                 <li class="discover">
                                     <a href="javascript:void(0)">
-                                        <img src="/images/pay2.png" alt="MasterCard">
+                                        <img src="{{ asset('images/pay2.png') }}" alt="MasterCard">
                                     </a>
                                 </li>
                             </ul>

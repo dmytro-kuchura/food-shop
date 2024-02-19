@@ -3,14 +3,13 @@
 namespace App\Repositories;
 
 use App\Http\Resources\ProductResource;
+use App\Models\CatalogProduct;
 use App\Models\Enum\Common;
-use App\Models\Enum\ProductConstants;
-use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
 class CatalogProductsRepository implements Repository
 {
-    protected $model = Product::class;
+    protected string $model = CatalogProduct::class;
 
     public function paginate()
     {
@@ -20,7 +19,6 @@ class CatalogProductsRepository implements Repository
     public function find(int $id)
     {
         $product = $this->model::where('id', $id)->first();
-
         return new ProductResource($product);
     }
 
@@ -152,7 +150,7 @@ class CatalogProductsRepository implements Repository
     {
         return $this->model::where('status', Common::STATUS_ACTIVE)
             ->where('name', 'like', '%' . $query . '%')
-            ->paginate(ProductConstants::PAGINATE_LIMIT);
+            ->paginate(Common::PAGINATE_LIMIT);
     }
 
     public function updateImage($data)
@@ -160,25 +158,13 @@ class CatalogProductsRepository implements Repository
         return $this->model::where('id', $data['id'])->update(['image' => $data['link']]);
     }
 
-    public function getFeatured(int $limit)
-    {
-        return $this->model::where('status', Common::STATUS_ACTIVE)
-            ->whereNotNull('image')
-            ->whereIn('category_id', ProductConstants::CYCLING_CATEGORIES)
-            ->limit($limit)
-            ->inRandomOrder()
-            ->get();
-    }
-
     public function getSpecial(int $limit)
     {
         return $this->model::where('status', Common::STATUS_ACTIVE)
             ->where(function ($query) {
-                $query->where('sale', ProductConstants::IS_SALE)
-                    ->orWhere('top', ProductConstants::IS_TOP);
+                $query->where('sale', true)->orWhere('new', true);
             })
             ->whereNotNull('image')
-            ->whereIn('category_id', ProductConstants::EQUIPMENT_CATEGORIES)
             ->limit($limit)
             ->inRandomOrder()
             ->get();
@@ -188,7 +174,6 @@ class CatalogProductsRepository implements Repository
     {
         return $this->model::where('status', Common::STATUS_ACTIVE)
             ->whereNotNull('image')
-            ->whereIn('category_id', ProductConstants::CYCLING_CATEGORIES)
             ->limit($limit)
             ->inRandomOrder()
             ->get();
@@ -197,8 +182,7 @@ class CatalogProductsRepository implements Repository
     public function getLatest(int $limit)
     {
         return $this->model::where('status', Common::STATUS_ACTIVE)
-            ->where('new', ProductConstants::IS_NEW)
-            ->whereIn('category_id', ProductConstants::COMPONENTS_CATEGORIES)
+            ->where('new', true)
             ->whereNotNull('image')
             ->limit($limit)
             ->inRandomOrder()
