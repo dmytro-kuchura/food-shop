@@ -51,8 +51,8 @@ class News extends Model
         return $this->getOriginalImageLink($this->image);
     }
 
-//    public function comments()
-//    {
-//        return $this->hasMany('App\Models\NewsComments', 'news_id', 'id');
-//    }
+    public function comments()
+    {
+        return $this->hasMany('App\Models\NewsComments', 'news_id', 'id');
+    }
 }

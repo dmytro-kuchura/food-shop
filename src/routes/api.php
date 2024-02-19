@@ -21,6 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
     Route::prefix('cart')->group(function () {
-        Route::get('/list', [CartController::class, 'list'])->name('api.cart.list');
+        Route::get('list', [CartController::class, 'list'])->name('api.cart.list');
+        Route::post('add', [CartController::class, 'add'])->name('api.cart.add');
+        Route::delete('delete/{item}', [CartController::class, 'delete'])->name('api.cart.delete');
+        Route::post('update', [CartController::class, 'update'])->name('api.cart.update');
     });
 });

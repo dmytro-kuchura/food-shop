@@ -11,7 +11,7 @@ class CreateNewsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
@@ -23,7 +23,7 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->text('keywords');
             $table->text('description');
-            $table->tinyInteger('status')->default(0);
+            $table->enum('status', ['ACTIVE', 'DISABLED'])->default('DISABLED');
             $table->integer('author')->default(0);
             $table->timestamps();
         });
@@ -34,7 +34,7 @@ class CreateNewsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('news');
     }

@@ -6,12 +6,11 @@
 
 @section('content')
 {{--    @widget('banner')--}}
-{{--    @widget('subBanner')--}}
-{{--    @widget('featuredProducts')--}}
+    @widget('featuredProducts')
 {{--    @widget('offerOfTheWeek')--}}
 {{--    @widget('perellexBanner')--}}
 {{--    @widget('featuredProductsSlider')--}}
-{{--    @widget('blog')--}}
+    @widget('news')
 {{--    @widget('services')--}}
-{{--    @widget('newsLetter')--}}
+    @widget('newsLetter')
 @endsection

@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Cart;
-use App\Models\CartItems;
 use App\Repositories\CartRepository;
 use App\Repositories\CatalogProductsRepository;
 use App\Repositories\CartItemsRepository;
@@ -110,7 +108,7 @@ class ShoppingCart
         return false;
     }
 
-    public function updateCart($data)
+    public function updateCart($data): bool
     {
         $cart = $this->cartRepository->find($this->cookie);
         if (!$cart) {
@@ -119,7 +117,7 @@ class ShoppingCart
         $this->cartItemsRepository->update($data, $cart->id);
     }
 
-    public function deleteItem($item)
+    public function deleteItem($item): void
     {
         $cart = $this->cartRepository->find($this->cookie);
         $this->cartItemsRepository->destroy($cart->id, $item);

@@ -18,7 +18,6 @@ class CartController extends Controller
     public function cart(): View
     {
         $page = $this->pagesRepository->findBySlug(SystemPagesConstants::CART_PAGE);
-
         return view('cart', [
             'page' => $page
         ]);

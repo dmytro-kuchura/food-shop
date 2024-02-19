@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property int $id
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  *
  * @property Cart $cart
- * @property Product $product
+ * @property CatalogProduct $product
  */
 class CartItems extends Model
 {
@@ -33,13 +34,13 @@ class CartItems extends Model
 
     protected $fillable = ['hash', 'cart_id', 'product_id', 'count', 'created_at', 'updated_at'];
 
-    public function cart()
+    public function cart(): HasOne
     {
         return $this->hasOne('App\Models\Cart', 'id', 'cart_id');
     }
 
-    public function product()
+    public function product(): HasOne
     {
-        return $this->hasOne('App\Models\Product', 'id', 'product_id');
+        return $this->hasOne('App\Models\CatalogProduct', 'id', 'product_id');
     }
 }
