@@ -17,6 +17,9 @@ jobs:
           php-version: '8.1'
           tools: composer:v2
 
+      - name: change to src directory
+        run: cd src
+
       - uses: actions/checkout@v3
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
