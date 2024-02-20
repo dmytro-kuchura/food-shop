@@ -18,7 +18,7 @@ jobs:
           tools: composer:v2
 
       - name: change to src directory
-        run: cd src
+        run: ls -al
 
       - uses: actions/checkout@v3
       - name: Copy .env
