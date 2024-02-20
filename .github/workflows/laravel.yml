@@ -5,41 +5,54 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
 jobs:
-  laravel-tests:
+  linux_tests:
+    runs-on: ubuntu-22.04
 
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.1, 8.2, 8.3]
+        stability: [prefer-lowest, prefer-stable]
+
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
 
     steps:
-      - uses: shivammathur/setup-php@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          php-version: '8.1'
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, igbinary, msgpack, lzf, zstd, lz4, gmp, :php-psr
+          ini-values: error_reporting=E_ALL
           tools: composer:v2
+          coverage: none
 
-      - name: List all files
-        run: ls -al
+      - name: Set minimum PHP 8.1 versions
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer require symfony/css-selector:^6.0 --no-interaction --no-update
 
-      - uses: actions/checkout@v3
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Set minimum PHP 8.2 versions
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer require guzzlehttp/psr7:^2.4 --no-interaction --no-update
+        if: matrix.php >= 8.2
 
-      - name: Install Dependencies
-        run: composer install
+      - name: Install dependencies
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
 
-      - name: Generate key
-        run: php artisan key:generate
-
-      - name: Directory Permissions
-        run: chmod -R 777 storage bootstrap/cache
-
-      - name: Create Database
-        run: |
-          mkdir -p database
-          touch database/database.sqlite
-
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
-        run: vendor/bin/phpunit
+      - name: Execute tests
+        run: vendor/bin/phpunit --display-deprecation
