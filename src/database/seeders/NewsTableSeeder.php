@@ -9,12 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class NewsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         for ($i = 0; $i < 50; $i++) {
             $faker = Faker\Factory::create();

@@ -2,14 +2,9 @@
 
 namespace App\Traits;
 
-/**
- * Trait for ShortDescriptions
- *
- * @package App\Traits
- */
 trait ShortDescription
 {
-    public static function getShortContent($content)
+    public static function getShortContent($content): string
     {
         $string = strip_tags($content);
         $string = substr($string, 0, 350);

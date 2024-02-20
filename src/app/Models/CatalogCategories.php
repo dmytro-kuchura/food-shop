@@ -23,18 +23,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class CatalogCategories extends Model
 {
-    /**
-     * Database table name
-     *
-     * @var string
-     */
     protected $table = 'catalog_categories';
 
-    /**
-     * Using timestamp
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
     protected $fillable = [

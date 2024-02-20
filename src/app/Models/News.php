@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Date;
 use App\Traits\OriginalImage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -25,21 +26,26 @@ class News extends Model
 {
     use Date, OriginalImage;
 
-    /**
-     * Database table name
-     *
-     * @var string
-     */
     protected $table = 'news';
 
-    /**
-     * Using timestamp
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
-    protected $fillable = ['name', 'image', 'alias', 'short', 'title', 'content', 'short', 'title', 'keywords', 'description', 'status', 'author', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'name',
+        'image',
+        'alias',
+        'short',
+        'title',
+        'content',
+        'short',
+        'title',
+        'keywords',
+        'description',
+        'status',
+        'author',
+        'created_at',
+        'updated_at'
+    ];
 
     public function getRussianDate()
     {
@@ -51,7 +57,12 @@ class News extends Model
         return $this->getOriginalImageLink($this->image);
     }
 
-    public function comments()
+    public function getShortAttribute(): string
+    {
+        return $this->getShortContent($this->content);
+    }
+
+    public function comments(): HasMany
     {
         return $this->hasMany('App\Models\NewsComments', 'news_id', 'id');
     }

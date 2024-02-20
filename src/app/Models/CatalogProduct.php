@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property double $cost_old;
  * @property integer $views;
  * @property string $stock_keeping_unit;
+ * @property string $information;
  * @property string $image;
  * @property string $title;
  * @property string $description;
@@ -53,6 +55,7 @@ class CatalogProduct extends Model
         'cost_old',
         'views',
         'brand',
+        'information',
         'image',
         'title',
         'keywords',
@@ -61,7 +64,12 @@ class CatalogProduct extends Model
         'updated_at'
     ];
 
-    public function images()
+    public function getShortAttribute(): string
+    {
+        return $this->getShortContent($this->information);
+    }
+
+    public function images(): HasMany
     {
         return $this->hasMany('App\Models\CatalogProductImages', 'product_id');
     }

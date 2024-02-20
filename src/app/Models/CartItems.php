@@ -18,21 +18,18 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class CartItems extends Model
 {
-    /**
-     * Database table name
-     *
-     * @var string
-     */
     protected $table = 'cart_items';
 
-    /**
-     * Using timestamp
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
-    protected $fillable = ['hash', 'cart_id', 'product_id', 'count', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'hash',
+        'cart_id',
+        'product_id',
+        'count',
+        'created_at',
+        'updated_at'
+    ];
 
     public function cart(): HasOne
     {

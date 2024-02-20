@@ -26,6 +26,7 @@ class CreateCatalogProductsTable extends Migration
             $table->decimal('cost_old', 14);
             $table->bigInteger('views')->default(0);
             $table->string('stock_keeping_unit')->nullable();
+            $table->longText('information')->nullable();
             $table->string('image')->nullable();
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
