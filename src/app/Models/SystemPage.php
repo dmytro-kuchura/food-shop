@@ -18,18 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class SystemPage extends Model
 {
-    /**
-     * Database table name
-     *
-     * @var string
-     */
     protected $table = 'system_pages';
 
-    /**
-     * Using timestamp
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
     protected $fillable = [

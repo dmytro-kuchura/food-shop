@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Date;
 use App\Traits\OriginalImage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -22,28 +23,27 @@ class NewsComments extends Model
 {
     use Date, OriginalImage;
 
-    /**
-     * Database table name
-     *
-     * @var string
-     */
     protected $table = 'news_comments';
 
-    /**
-     * Using timestamp
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
-    protected $fillable = ['name', 'email', 'message', 'news_id', 'reply_id', 'status', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'name',
+        'email',
+        'message',
+        'news_id',
+        'reply_id',
+        'status',
+        'created_at',
+        'updated_at'
+    ];
 
     public function getRussianDate()
     {
         return $this->getHumanDate($this->created_at);
     }
 
-    public function replies()
+    public function replies(): HasMany
     {
         return $this->hasMany('App\Models\NewsComments', 'reply_id', 'id');
     }

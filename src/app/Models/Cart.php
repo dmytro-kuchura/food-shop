@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -15,23 +16,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cart extends Model
 {
-    /**
-     * Database table name
-     *
-     * @var string
-     */
     protected $table = 'cart';
 
-    /**
-     * Using timestamp
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
-    protected $fillable = ['hash', 'user_id', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'hash',
+        'user_id',
+        'created_at',
+        'updated_at'
+    ];
 
-    public function items()
+    public function items(): HasMany
     {
         return $this->hasMany('App\Models\CartItems', 'cart_id', 'id')
             ->with('product');

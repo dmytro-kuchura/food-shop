@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Date;
 use App\Traits\OrderTotal;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -29,23 +30,20 @@ class Orders extends Model
 {
     use Date, OrderTotal;
 
-    /**
-     * Database table name
-     *
-     * @var string
-     */
     protected $table = 'orders';
 
-    /**
-     * Using timestamp
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
-    protected $fillable = ['user_id', 'delivery', 'payment', 'status', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'user_id',
+        'delivery',
+        'payment',
+        'status',
+        'created_at',
+        'updated_at'
+    ];
 
-    public function items()
+    public function items(): HasMany
     {
         return $this->hasMany('App\Models\OrderItems', 'order_id');
     }
