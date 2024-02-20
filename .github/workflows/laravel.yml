@@ -17,7 +17,7 @@ jobs:
           php-version: '8.1'
           tools: composer:v2
 
-      - name: change to src directory
+      - name: List all files
         run: ls -al
 
       - uses: actions/checkout@v3
