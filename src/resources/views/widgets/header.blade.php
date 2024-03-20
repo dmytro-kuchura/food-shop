@@ -12,7 +12,7 @@
                                 <ul>
                                     <li class="info-link checkout-icon">
                                         <a href="{{ route('dashboard') }}" title="{{ __('static.header.admin') }}">
-                                            <img src="{{ asset('/images/logo.jpg') }}" alt="{{ __('static.header.admin') }}">{{ __('static.header.admin') }}
+                                            <img src="{{ asset('/images/kubfood_logo.png') }}" alt="{{ __('static.header.admin') }}">{{ __('static.header.admin') }}
                                         </a>
                                     </li>
                                 </ul>
@@ -46,7 +46,7 @@
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
                             <a class="navbar-brand page-scroll" href="{{ route('home') }}">
-                                <img alt="Store" src="{{ asset('/images/logo.jpg') }}">
+                                <img alt="Store" class="main-logo" src="{{ asset('/images/kubfood_logo.png') }}">
                             </a>
                         </div>
                     </div>

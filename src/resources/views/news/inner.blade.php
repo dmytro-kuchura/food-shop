@@ -23,8 +23,8 @@
                                         <li>
                                             <span class="post-date">{{ $news->getRussianDate() }}</span>
                                         </li>
-                                        <li><span>Автор</span>
-                                            <a href="javascript:void(0)"> Администратор</a>
+                                        <li><span>{{ __('static.news.published') }}: </span>
+                                            <a href="javascript:void(0)"> {{ __('static.news.author') }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -33,40 +33,6 @@
                                 </div>
                                 {!! $news->content !!}
                                 <hr>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="comments-area-main">
-                                @if(count($comments))
-                                    <div class="comments-area">
-                                        <h4>Комментарии<span>{{ $count_comments }}</span></h4>
-                                        @foreach($comments[0] as $obj)
-                                            <ul class="comment-list mt-20">
-                                                <li>
-                                                    <div class="comment-user">
-                                                        <img src="/images/avatar-placeholder.svg"
-                                                             alt="{{ $obj->name }}">
-                                                    </div>
-                                                    <div class="comment-detail">
-                                                        <div class="user-name">{{ $obj->name }}</div>
-                                                        <div class="post-info">
-                                                            <ul>
-                                                                <li>{{ date('F j, Y', strtotime($obj->created_at)) }}</li>
-                                                            </ul>
-                                                        </div>
-                                                        <p>{{ $obj->message }}</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        @endforeach
-                                    </div>
-                                @endif
-                                <div class="main-form mt-30">
-                                    <h4>Оставьте комментарий</h4>
-                                    <comments :record="{{ $news->id }}"></comments>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -104,7 +70,7 @@
                 </span>
             </div>
 
-            <p itemprop="image">{{ $news->image ? $news->image : '/images/no-image.png' }}</p>
+            <p itemprop="image">{{ $news->image ?? '/images/no-image.png' }}</p>
         </div>
     </section>
 @endsection

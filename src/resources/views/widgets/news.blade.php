@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-12 ">
                     <div class="heading-part align-center mb-30">
-                        <h2 class="main_title heading"><span>Последние новости</span></h2>
+                        <h2 class="main_title heading"><span>{{ __('static.widget.latest_news') }}</span></h2>
                     </div>
                 </div>
             </div>
@@ -28,15 +28,15 @@
                                             <div class="blog-title">
                                                 <a href="{{ route('news.inner', ['alias' => $record->alias]) }}">{{ $record->name }}</a>
                                             </div>
-                                            <span>опубликовал: Администратор</span>
+                                            <span>{{ __('static.widget.news_published') }}: {{ __('static.widget.news_author') }}</span>
                                             <div class="post-info">
                                                 <p>{{ $record->short }}</p>
                                                 <ul>
-                                                    <li>
-                                                    <a href="javascript:void(0)">({{ count($record->comments) }}) комментариев</a>
-                                                    </li>
+{{--                                                    <li>--}}
+{{--                                                    <a href="javascript:void(0)">({{ count($record->comments) }}) комментариев</a>--}}
+{{--                                                    </li>--}}
                                                     <li class="right-side">
-                                                        <a href="{{ route('news.inner', ['alias' => $record->alias]) }}">Подробнее
+                                                        <a href="{{ route('news.inner', ['alias' => $record->alias]) }}">{{ __('static.widget.details') }}
                                                             <i class="fa fa-angle-double-right"></i>
                                                         </a>
                                                     </li>

@@ -24,7 +24,6 @@ services:
       context: .docker/php
     volumes:
       - './.docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini'
-      - './.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini'
       - './src/:/var/www/html'
 
   scheduler:
@@ -35,7 +34,7 @@ services:
 
   db:
     container_name: food_shop_db
-    image: 'postgres:14.8'
+    image: postgres:14.8
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}

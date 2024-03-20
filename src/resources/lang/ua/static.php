@@ -12,6 +12,20 @@ return [
     'widget.popular' => 'Популярні товари',
     'widget.sale' => 'Розпродаж',
     'widget.new' => 'Новинка',
+    'widget.news_title' => 'Останні новини',
+    'widget.news_published' => 'Опублікував',
+    'widget.news_author' => 'Адміністратор',
+    'widget.details' => 'Детальніше',
+
+    'news.published' => 'Опублікував',
+    'news.author' => 'Адміністратор',
+
+    'catalog.description' => 'Опис',
+    'catalog.specifications' => 'Характеристики',
+    'catalog.available' => 'Наявність',
+    'catalog.is_available' => 'В наявності',
+    'catalog.is_not_available' => 'Відсутне',
+    'catalog.articul' => 'Артикул',
 
     'footer.contacts' => 'Контакти',
     'footer.catalog' => 'Каталог',
@@ -22,6 +36,10 @@ return [
     'footer.registration' => 'Реєстрація',
     'footer.wishlist' => 'Список бажань',
     'footer.news' => 'Новини',
+
+    'footer.about' => 'Про магазин',
+    'footer.payments' => 'Оплата',
+    'footer.delivery' => 'Доставка',
 
     'form.subscribe.title' => 'Підпишіться',
     'form.subscribe.subtitle' => 'Отримуйте останні новини та оновлення товарів',

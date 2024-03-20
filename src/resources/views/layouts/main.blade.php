@@ -10,13 +10,13 @@
     <meta property="og:locale" content="ru_RU"/>
     <meta property="og:title" content="@yield('title')"/>
     <meta property="og:description" content="@yield('description')"/>
-    <meta property="og:image" content="{{ asset('/images/logo.jpg') }}"/>
+    <meta property="og:image" content="{{ asset('/images/kubfood_logo.png') }}"/>
     <meta property="og:url" content="{{ url(Request::url()) }}"/>
     <meta property="og:site_name" content="Velo - City"/>
 
     <meta itemprop="name" content="@yield('title')"/>
     <meta itemprop="description" content="@yield('description')"/>
-    <meta itemprop="image" content="{{ asset('/images/logo.jpg') }}"/>
+    <meta itemprop="image" content="{{ asset('/images/kubfood_logo.png') }}"/>
 
     <meta name="site-created" content="2024/02/15">
 

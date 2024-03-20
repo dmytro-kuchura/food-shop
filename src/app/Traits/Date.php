@@ -1,51 +1,36 @@
 <?php namespace App\Traits;
 
-/**
- * Trait HumanDate
- *
- * @package App\Traits
- */
 trait Date
 {
-    /**
-     * Полные названия месяцев
-     *
-     * @var array
-     */
     static $months = [
-        1 => 'Января', 2 => 'Февраля', 3 => 'Марта', 4 => 'Апреля',
-        5 => 'Мая', 6 => 'Июня', 7 => 'Июля', 8 => 'Августа',
-        9 => 'Сентября', 10 => 'Октября', 11 => 'Ноября', 12 => 'Декабря',
+        1 => 'Січень', 2 => 'Лютий', 3 => 'березень', 4 => 'Квітень',
+        5 => 'Травень', 6 => 'Червень', 7 => 'Липень', 8 => 'Серпень',
+        9 => 'Вересень', 10 => 'Жовтень', 11 => 'Листопад', 12 => 'Грудень',
     ];
 
-    /**
-     * Короткие названия месяцев
-     *
-     * @var array
-     */
     static $shortMonths = [
-        1 => 'Янв', 2 => 'Фев', 3 => 'Мар', 4 => 'Апр',
-        5 => 'Мая', 6 => 'Июн', 7 => 'Июл', 8 => 'Авг',
-        9 => 'Сен', 10 => 'Окт', 11 => 'Ноя', 12 => 'Дек',
+        1 => 'Січ', 2 => 'Лют', 3 => 'Бер', 4 => 'Кві',
+        5 => 'Тра', 6 => 'Чер', 7 => 'Лип', 8 => 'Сер',
+        9 => 'Вер', 10 => 'Жов', 11 => 'Лис', 12 => 'Гру',
     ];
 
-    public static function getRussianMonth(string $date): string
+    public static function getUkrainianMonth(string $date): string
     {
         return self::$months[date('n', strtotime($date))];
     }
 
-    public static function getShortRussianMonth(string $date): string
+    public static function getShortUkrainianMonth(string $date): string
     {
         return self::$shortMonths[date('n', strtotime($date))];
     }
 
     public static function getHumanDate(string $date): string
     {
-        return strftime('%d ', strtotime($date)) . ' ' . self::getRussianMonth($date) . ', ' . strftime('%Y', strtotime($date));
+        return date('d ', strtotime($date)) . ' ' . self::getUkrainianMonth($date) . ', ' . date('Y', strtotime($date));
     }
 
     public static function getShortHumanDate(string $date): string
     {
-        return strftime('%d ', strtotime($date)) . ' ' . self::getShortRussianMonth($date) . ', ' . strftime('%Y', strtotime($date));
+        return date('d ', strtotime($date)) . ' ' . self::getShortUkrainianMonth($date) . ', ' . date('Y', strtotime($date));
     }
 }

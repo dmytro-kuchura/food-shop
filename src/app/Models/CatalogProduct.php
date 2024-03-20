@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ShortDescription;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -29,18 +30,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class CatalogProduct extends Model
 {
-    /**
-     * Database table name
-     *
-     * @var string
-     */
+    use ShortDescription;
+
     protected $table = 'catalog_products';
 
-    /**
-     * Using timestamp
-     *
-     * @var bool
-     */
     public $timestamps = true;
 
     protected $fillable = [
@@ -54,7 +47,7 @@ class CatalogProduct extends Model
         'cost',
         'cost_old',
         'views',
-        'brand',
+        'stock_keeping_unit',
         'information',
         'image',
         'title',

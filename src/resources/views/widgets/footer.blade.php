@@ -99,12 +99,12 @@
                             <ul class="payment_icon">
                                 <li class="visa">
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('images/pay1.png') }}" alt="Visa">
+                                        <img src="{{ asset('images/visa.png') }}" alt="Visa">
                                     </a>
                                 </li>
                                 <li class="discover">
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('images/pay2.png') }}" alt="MasterCard">
+                                        <img src="{{ asset('images/mastercard.png') }}" alt="MasterCard">
                                     </a>
                                 </li>
                             </ul>
@@ -120,9 +120,9 @@
                 <div class="col-12 mb-30">
                     <div class="site-link">
                         <ul>
-                            <li><a href="{{ route('about') }}">О магазине</a>/</li>
-                            <li><a href="{{ route('payments') }}">Оплата</a>/</li>
-                            <li><a href="{{ route('delivery') }}">Доставка</a></li>
+                            <li><a href="{{ route('about') }}">{{ __('static.footer.about') }}</a>/</li>
+                            <li><a href="{{ route('payments') }}">{{ __('static.footer.payments') }}</a>/</li>
+                            <li><a href="{{ route('delivery') }}">{{ __('static.footer.delivery') }}</a></li>
                         </ul>
                     </div>
                 </div>

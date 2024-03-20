@@ -1,17 +1,17 @@
-# Environment deps.
-/.env*
+# IntelliJ IDEA
+.idea
+.idea/
+.idea/*
+.idea/php.xml
 
-# IDEs
-/nbproject
-/.idea
+# ENVIRONMENT
+.env
 
-# Temp dirs & trash
-/temp
-/tmp
-/build
-/.build
-.DS_Store
+# OTHER
+www/node_modules
 
-# etc.
-*.cache
-/gl-*-report.json
+# DB
+.docker/postgres/data/*
+
+# composer.lock
+src/composer.lock

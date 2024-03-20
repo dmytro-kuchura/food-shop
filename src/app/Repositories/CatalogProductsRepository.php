@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Http\Resources\ProductResource;
 use App\Models\CatalogProduct;
 use App\Models\Enum\Common;
 use Illuminate\Support\Facades\DB;
@@ -18,8 +17,7 @@ class CatalogProductsRepository implements Repository
 
     public function find(int $id)
     {
-        $product = $this->model::where('id', $id)->first();
-        return new ProductResource($product);
+        return $this->model::where('id', $id)->first();
     }
 
     public function store(int $id, array $data)
@@ -71,13 +69,13 @@ class CatalogProductsRepository implements Repository
 
     public function byFilter(string $alias, ?array $params)
     {
-        $query = $this->model::join('catalog', 'catalog.id', '=', 'products.category_id')
+        $query = $this->model::join('catalog_categories', 'catalog_categories.id', '=', 'catalog_products.category_id')
             ->select(
-                DB::raw('MAX(products.cost) as max'),
-                DB::raw('MIN(products.cost) as min')
+                DB::raw('MAX(catalog_products.cost) as max'),
+                DB::raw('MIN(catalog_products.cost) as min')
             )
-            ->where('catalog.alias', $alias)
-            ->where('products.status', Common::STATUS_ACTIVE);
+            ->where('catalog_categories.alias', $alias)
+            ->where('catalog_products.status', Common::STATUS_ACTIVE);
 
         $query = $this->sortable($query, $params);
 
@@ -86,10 +84,10 @@ class CatalogProductsRepository implements Repository
 
     public function byCategory(string $alias, ?array $params)
     {
-        $query = $this->model::join('catalog', 'catalog.id', '=', 'products.category_id')
-            ->select('products.*')
-            ->where('catalog.alias', $alias)
-            ->where('products.status', Common::STATUS_ACTIVE);
+        $query = $this->model::join('catalog_categories', 'catalog_categories.id', '=', 'catalog_products.category_id')
+            ->select('catalog_products.*')
+            ->where('catalog_categories.alias', $alias)
+            ->where('catalog_products.status', Common::STATUS_ACTIVE);
 
         $query = $this->sortable($query, $params);
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class CatalogProductsTableSeeder extends Seeder
+class SpecificationsTableSeeder extends Seeder
 {
     public function run(): void
     {
@@ -36,3 +36,5 @@ class CatalogProductsTableSeeder extends Seeder
         ];
     }
 }
+
+

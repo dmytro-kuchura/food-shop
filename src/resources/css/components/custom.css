@@ -1900,7 +1900,7 @@ _______________________________________________________*/
 }
 
 .inner-banner1 {
-    background: url(../../images/inner-banner1.jpg) no-repeat scroll center center;
+    background: url(../../images/inner-banner.png) no-repeat scroll center center;
     padding: 70px 0 60px;
 }
 
@@ -1914,7 +1914,7 @@ _______________________________________________________*/
 
 .inner-banner1 .banner-detail h1 {
     display: inline-block;
-    color: #fff;
+    color: #808080;
     font-weight: 600;
     font-size: 22px;
     letter-spacing: 1px;
@@ -1929,11 +1929,11 @@ _______________________________________________________*/
 
 .bread-crumb ul li {
     display: inline-block;
-    color: #fff;
+    color: #808080;
 }
 
 .bread-crumb ul li a {
-    color: #fff;
+    color: #808080;
 }
 
 .bread-crumb ul li a, .bread-crumb ul li span {
@@ -1950,7 +1950,7 @@ _______________________________________________________*/
 }
 
 .bread-crumb ul li span {
-    color: #ffffff;
+    color: #808080;
 }
 
 /* Bread-crumb CSS End */
@@ -6265,6 +6265,10 @@ ul.tagcloud li a:hover {
 
 .copy-right a:hover, .site-link li a:hover {
     color: #28a8af;
+}
+
+.main-logo {
+    max-height: 100px;
 }
 
 /* Scroll-top Arrow CSS Start */
