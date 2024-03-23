@@ -30,11 +30,13 @@
                                                 <div class="row">
                                                     <label for="name" class="col-lg-3 control-label">Ваше имя</label>
                                                     <div class="col-lg-9">
-                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" required placeholder="Ваше имя">
+                                                        <input type="text"
+                                                               class="form-control @error('name') is-invalid @enderror"
+                                                               name="name" id="name" required placeholder="Ваше имя">
                                                     </div>
 
                                                     @error('name')
-                                                        <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
@@ -44,13 +46,16 @@
                                         <div class="col-12">
                                             <div class="input-box">
                                                 <div class="row">
-                                                    <label for="email" class="col-lg-3 control-label">Email address</label>
+                                                    <label for="email" class="col-lg-3 control-label">Email
+                                                        address</label>
                                                     <div class="col-lg-9">
-                                                        <input type="email" class="form-control @error('password') is-invalid @enderror" name="email" id="email" required placeholder="Email">
+                                                        <input type="email"
+                                                               class="form-control @error('password') is-invalid @enderror"
+                                                               name="email" id="email" required placeholder="Email">
                                                     </div>
 
                                                     @error('email')
-                                                        <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
@@ -71,11 +76,14 @@
                                                 <div class="row">
                                                     <label for="password" class="col-lg-3 control-label">Пароль</label>
                                                     <div class="col-lg-9">
-                                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required placeholder="Введите Ваш пароль">
+                                                        <input type="password"
+                                                               class="form-control @error('password') is-invalid @enderror"
+                                                               name="password" id="password" required
+                                                               placeholder="Введите Ваш пароль">
                                                     </div>
 
                                                     @error('password')
-                                                        <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
@@ -85,9 +93,13 @@
                                         <div class="col-12">
                                             <div class="input-box">
                                                 <div class="row">
-                                                    <label for="password_confirmation" class="col-lg-3 control-label">Повторите пароль</label>
+                                                    <label for="password_confirmation" class="col-lg-3 control-label">Повторите
+                                                        пароль</label>
                                                     <div class="col-lg-9">
-                                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" required placeholder="Повторите Ваш пароль">
+                                                        <input type="password"
+                                                               class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                               name="password_confirmation" id="password_confirmation"
+                                                               required placeholder="Повторите Ваш пароль">
                                                     </div>
 
                                                     @error('password_confirmation')
@@ -127,5 +139,4 @@
             </div>
         </div>
     </section>
-
 @endsection

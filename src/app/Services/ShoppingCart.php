@@ -14,8 +14,6 @@ class ShoppingCart
 
     private CartItemsRepository $cartItemsRepository;
 
-    private CatalogProductsRepository $productsRepository;
-
     private string|array|null $cookie;
 
     private string $uuid;
@@ -28,12 +26,11 @@ class ShoppingCart
     {
         $this->cartRepository = $cartRepository;
         $this->cartItemsRepository = $cartItemsRepository;
-        $this->productsRepository = $productsRepository;
         $this->cookie = Cookie::get('cart');
-        $this->uuid = (string)Str::uuid();
+        $this->uuid = Str::uuid()->toString();
     }
 
-    public function cartList()
+    public function cartList(): array
     {
         $list = [];
         $total_price = 0;
@@ -89,7 +86,7 @@ class ShoppingCart
         ];
     }
 
-    public function addItem($data)
+    public function addItem($data): bool|string
     {
         $cart = $this->cartRepository->find($this->cookie);
         if (!$cart) {
@@ -108,11 +105,11 @@ class ShoppingCart
         return false;
     }
 
-    public function updateCart($data): bool
+    public function updateCart($data): void
     {
         $cart = $this->cartRepository->find($this->cookie);
         if (!$cart) {
-            return false;
+            return;
         }
         $this->cartItemsRepository->update($data, $cart->id);
     }

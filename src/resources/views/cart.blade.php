@@ -23,14 +23,14 @@
                         <div class="mt-30 mt-xs-15">
                             <a href="{{ route('shop.index') }}" class="btn btn-color">
                                 <span><i class="fa fa-angle-left"></i></span>
-                                Продолжить покупки
+                                {{ __('static.cart.continue') }}
                             </a>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="mt-30 mt-xs-15 right-side xs-float-none">
                             <a href="{{ route('checkout') }}" class="btn btn-color">
-                                Оформить заказ
+                                {{ __('static.cart.checkout') }}
                                 <span><i class="fa fa-angle-right"></i></span>
                             </a>
                         </div>

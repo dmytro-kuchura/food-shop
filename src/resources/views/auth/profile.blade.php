@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
-@section('title', $page->title ? $page->title : $page->name)
-@section('description', $page->description ? $page->description : null)
-@section('keywords', $page->keywords ? $page->keywords : null)
+@section('title', $page->title ?? $page->name)
+@section('description', $page->description ?? null)
+@section('keywords', $page->keywords ?? null)
 
 @section('content')
     @widget('breadcrumbs')
@@ -13,24 +13,21 @@
                     <div class="account-sidebar account-tab mb-sm-30">
                         <div class="dark-bg tab-title-bg">
                             <div class="heading-part">
-                                <div class="sub-title"><span></span> Меню пользователя</div>
+                                <div class="sub-title"><span></span>{{ __('static.profile.menu') }}</div>
                             </div>
                         </div>
                         <div class="account-tab-inner">
                             <ul class="account-tab-stap">
-                                <li id="step1" class="active">
-                                    <a href="javascript:void(0)">
-                                        Мой аккаунт<i class="fa fa-angle-right"></i>
+                                <li id="profile" class="active">
+                                    <a href="javascript:void(0)">{{ __('static.profile.profile') }}<i class="fa fa-angle-right"></i>
                                     </a>
                                 </li>
-                                <li id="step2">
-                                    <a href="javascript:void(0)">
-                                        Список заказов<i class="fa fa-angle-right"></i>
+                                <li id="orders">
+                                    <a href="javascript:void(0)">{{ __('static.profile.orders') }}<i class="fa fa-angle-right"></i>
                                     </a>
                                 </li>
-                                <li id="step3">
-                                    <a href="javascript:void(0)">
-                                        Смена пароля<i class="fa fa-angle-right"></i>
+                                <li id="password">
+                                    <a href="javascript:void(0)">{{ __('static.profile.change_password') }}<i class="fa fa-angle-right"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -38,11 +35,11 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div id="data-step1" class="account-content" data-temp="tabdata">
+                    <div id="data-profile" class="account-content" data-temp="tabdata">
                         <div class="row">
                             <div class="col-12">
                                 <div class="heading-part heading-bg mb-30">
-                                    <h2 class="heading m-0">Мой аккаунт</h2>
+                                    <h2 class="heading m-0">{{ __('static.profile.profile') }}</h2>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +47,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="heading-part">
-                                        <h3 class="sub-heading">Вы авторизованы как, {{ $user->name }}</h3>
+                                        <h3 class="sub-heading">{{ __('static.profile.auth_name') }} {{ $user->name }}</h3>
                                     </div>
                                     <p>
                                         На это странице Вы сможете сменить свои персональные данные.
@@ -62,50 +59,58 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="input-box">
-                                            <label for="name">Ваше имя</label>
-                                            <input type="text" placeholder="Ваше имя" required
+                                            <label for="name">{{ __('static.profile.name') }}</label>
+                                            <input type="text" placeholder="{{ __('static.profile.name') }}" required
                                                    value="{{ $user->name }}"
                                                    name="name" id="name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-box">
-                                            <label for="last_name">Ваша фамилия</label>
-                                            <input type="text" placeholder="Введите вашу фамилию" required
+                                            <label for="last_name">{{ __('static.profile.last_name') }}</label>
+                                            <input type="text" placeholder="{{ __('static.profile.last_name') }}" required
                                                    value="{{ $user->last_name ?? '' }}"
                                                    name="last_name" id="last_name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="input-box">
-                                            <label for="middle_name">Ваше отчество</label>
-                                            <input type="text" placeholder="Введите ваше отчество" required
+                                            <label for="middle_name">{{ __('static.profile.middle_name') }}</label>
+                                            <input type="text" placeholder="{{ __('static.profile.middle_name') }}" required
                                                    value="{{ $user->middle_name ?? '' }}"
                                                    name="middle_name" id="middle_name">
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <div class="input-box">
-                                            <label for="name">Ваш телефон</label>
-                                            <input type="text" placeholder="Ваш телефон" required
+                                            <label for="name">{{ __('static.profile.phone') }}</label>
+                                            <input type="text" placeholder="{{ __('static.profile.phone') }}" required
                                                    value="{{ $user->phone ?? '' }}"
-                                                   name="name" id="name">
+                                                   name="phone" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-box">
+                                            <label for="name">{{ __('static.profile.email') }}</label>
+                                            <input type="text" placeholder="{{ __('static.profile.email') }}"
+                                                   value="{{ $user->email ?? '' }}"
+                                                   name="email" id="email">
                                         </div>
                                     </div>
 
                                     <div class="col-12">
-                                        <button class="btn-color" type="submit">Сменить данные</button>
+                                        <button class="btn-color" type="submit">{{ __('static.profile.change_profile') }}</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div id="data-step2" class="account-content" data-temp="tabdata" style="display:none">
+                    <div id="data-orders" class="account-content" data-temp="tabdata" style="display:none">
                         <div id="form-print" class="admission-form-wrapper">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="heading-part heading-bg mb-30">
-                                        <h2 class="heading m-0">Список заказов</h2>
+                                        <h2 class="heading m-0">{{ __('static.profile.orders') }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -177,11 +182,11 @@
                             @endforeach
                         </div>
                     </div>
-                    <div id="data-step3" class="account-content" data-temp="tabdata" style="display:none">
+                    <div id="data-password" class="account-content" data-temp="tabdata" style="display:none">
                         <div class="row">
                             <div class="col-12">
                                 <div class="heading-part heading-bg mb-30">
-                                    <h2 class="heading m-0">Смена пароля</h2>
+                                    <h2 class="heading m-0">{{ __('static.profile.change_password') }}</h2>
                                 </div>
                             </div>
                         </div>
@@ -190,27 +195,27 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-box">
-                                        <label for="password">Старый пароль</label>
-                                        <input type="password" placeholder="Старый пароль" required
+                                        <label for="password">{{ __('static.profile.old_password') }}</label>
+                                        <input type="password" placeholder="{{ __('static.profile.old_password') }}" required
                                                name="password" id="password">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-box">
-                                        <label for="new_password">Новый пароль</label>
-                                        <input type="password" placeholder="Введите новый пароль" required
+                                        <label for="new_password">{{ __('static.profile.new_password') }}</label>
+                                        <input type="password" placeholder="{{ __('static.profile.new_password') }}" required
                                                name="new_password" id="new_password">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-box">
-                                        <label for="new_password_confirmation">Подтверждение нового пароля</label>
-                                        <input type="password" placeholder="Подтвердите новый пароль" required
+                                        <label for="new_password_confirmation">{{ __('static.profile.confirm_password') }}</label>
+                                        <input type="password" placeholder="{{ __('static.profile.confirm_password') }}" required
                                                name="new_password_confirmation" id="new_password_confirmation">
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn-color" type="submit">Сменить пароль</button>
+                                    <button class="btn-color" type="submit">{{ __('static.profile.change_password') }}</button>
                                 </div>
                             </div>
                         </form>

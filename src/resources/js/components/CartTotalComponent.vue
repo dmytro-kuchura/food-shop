@@ -2,12 +2,12 @@
     <table class="table">
         <thead>
         <tr>
-            <th colspan="2">Итого</th>
+            <th colspan="2">Всього</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>Товаров</td>
+            <td>Товарів</td>
             <td>
                 <div class="price-box">
                     <span class="price">{{ cart.totalCount }}</span>
@@ -15,7 +15,7 @@
             </td>
         </tr>
         <tr>
-            <td><b>К оплате</b></td>
+            <td><b>До сплати</b></td>
             <td>
                 <div class="price-box">
                     <span class="price"><b>₴ {{ cart.totalPrice }}</b></span>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SiteController;
@@ -20,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'index'])->name('home');
 
-Route::get('/login', [SiteController::class, 'index'])->name('login');
-Route::get('/register', [SiteController::class, 'index'])->name('register');
+Auth::routes();
+
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+Route::post('change', [ProfileController::class, 'change'])->name('profile.change');
+Route::post('change-password', [ProfileController::class, 'changePassword'])->name('profile.change.password');
 
 Route::prefix('news')->group(function () {
     Route::get('/', [NewsController::class, 'index'])->name('news.index');
@@ -45,4 +49,4 @@ Route::get('/delivery', 'SiteController@about')->name('delivery');
 Route::get('/contact', 'SiteController@contacts')->name('contacts');
 Route::get('/search', 'SiteController@search')->name('search');
 
-Route::get('/{slug}', 'PagesController@page')->name('page');
+//Route::get('/{slug}', PageController::class, 'page')->name('page');

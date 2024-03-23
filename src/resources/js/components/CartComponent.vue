@@ -3,7 +3,7 @@
         <a href="/cart">
             <span class="cart-icon-main"><small class="cart-notification">{{ cart.totalCount }}</small> </span>
             <div class="cart-text">
-                <div class="my-cart">Ваша корзина</div>
+                <div class="my-cart">Кошик</div>
                 <div class="total-price">₴ {{ cart.totalPrice }}</div>
             </div>
         </a>
@@ -28,15 +28,15 @@
                 </li>
             </ul>
             <p class="cart-sub-title">
-                <span class="pull-left">Итого</span>
+                <span class="pull-left">Підсумок</span>
                 <span class="pull-right">
                     <strong class="price-box">₴ {{ cart.totalPrice }}</strong>
                 </span>
             </p>
             <div class="clearfix"></div>
             <div class="mt-20">
-                <a href="/cart" class="btn-color btn"><i class="fa fa-shopping-cart"></i>Корзина</a>
-                <a v-if="cart.list.length" href="/checkout" class="btn-color btn right-side"><i class="fa fa-share"></i>Купить</a>
+                <a href="/cart" class="btn-color btn"><i class="fa fa-shopping-cart"></i>Кошик</a>
+                <a v-if="cart.list.length" href="/checkout" class="btn-color btn right-side"><i class="fa fa-share"></i>Оформити</a>
             </div>
         </div>
     </li>
