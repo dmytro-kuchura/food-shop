@@ -16,7 +16,7 @@
                                 <div class="col-xl-4 col-lg-6 col-12">
                                     <div class="blog-item">
                                         <div class="blog-media mb-20">
-                                            <img src="{{ $obj->image ? $obj->image : '/images/no-image.png' }}" alt="{{ $obj->name }}">
+                                            <img src="{{ $obj->image ?? '/images/no-image.png' }}" alt="{{ $obj->name }}">
                                             <div class="blog-effect"></div>
                                             <a href="{{ route('news.inner', ['alias' => $obj->alias]) }}" title="{{ $obj->name }}"
                                                class="read">&nbsp;</a>

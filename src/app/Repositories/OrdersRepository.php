@@ -32,11 +32,11 @@ class OrdersRepository
 
     public function paginate()
     {
-        return $this->model::select(DB::raw('SUM(order_items.count * order_items.cost) as total'), 'orders.*')
-            ->leftJoin('order_items', 'orders.id', '=', 'order_items.order_id')
+        return $this->model::select(DB::raw('SUM(orders_items.count * orders_items.cost) as total'), 'orders.*')
+            ->leftJoin('orders_items', 'orders.id', '=', 'orders_items.order_id')
             ->orderBy('orders.id', 'desc')
             ->groupBy('orders.id')
-            ->paginate(12);
+            ->paginate(10);
     }
 
     public function getOrdersByUser(int $userId)

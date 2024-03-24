@@ -17,7 +17,6 @@
                             </a>
                         </li>
                     @endif
-
                     @foreach ($elements as $element)
                         @if (is_array($element))
                             @foreach ($element as $page => $url)
@@ -33,7 +32,6 @@
                             @endforeach
                         @endif
                     @endforeach
-
                     @if ($paginator->hasMorePages())
                         <li>
                             <a href="{{ $paginator->nextPageUrl() }}">

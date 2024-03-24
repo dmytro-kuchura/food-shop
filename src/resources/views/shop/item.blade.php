@@ -12,7 +12,6 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-lg-5 col-md-5 mb-xs-30">
-
                             <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
                                 @if(count($result->images) > 0)
                                     @foreach($result->images as $image)
@@ -33,7 +32,6 @@
                                     <div class="product-detail-main">
                                         <div class="product-item-details">
                                             <h1 class="product-item-name">{{ $result->name }}</h1>
-
                                             <div class="price-box">
                                                 <span class="price">₴ {{ $result->cost }}</span>
                                                 @if($result->sale)

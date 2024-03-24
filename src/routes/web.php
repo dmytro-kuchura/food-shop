@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\ProfileController;
@@ -24,8 +25,9 @@ Route::get('/', [SiteController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard'); // done
-    Route::get('/catalog-categories', [AdminController::class, 'dashboard'])->name('admin.catalog.categories');
-    Route::get('/catalog-categories', [AdminController::class, 'dashboard'])->name('admin.catalog.categories');
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [OrdersController::class, 'list'])->name('admin.orders.list');
+    });
 });
 
 Auth::routes();

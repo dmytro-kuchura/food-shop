@@ -22,7 +22,7 @@
         </a>
         <div id="orders" class="collapse">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Список замовлень</a>
+                <a class="collapse-item" href="{{ route('admin.orders.list') }}">Список замовлень</a>
                 <a class="collapse-item" href="cards.html">Доставка</a>
                 <a class="collapse-item" href="cards.html">Оплата</a>
             </div>

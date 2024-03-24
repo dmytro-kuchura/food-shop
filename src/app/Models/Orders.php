@@ -6,6 +6,7 @@ use App\Traits\Date;
 use App\Traits\OrderTotal;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property int $id
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $updated_at
  *
  * @property OrdersItems $items
+ * @property OrdersPayments $paymentType
  */
 class Orders extends Model
 {
@@ -48,12 +50,18 @@ class Orders extends Model
         return $this->hasMany('App\Models\OrdersItems', 'order_id');
     }
 
-    public function getUkrainianDate()
+    public function paymentType(): HasOne
+    {
+        return $this->hasOne('App\Models\OrdersPayments', 'payment');
+    }
+
+
+    public function getUkrainianDate(): string
     {
         return $this->getHumanDate($this->created_at);
     }
 
-    public function getOrderTotal()
+    public function getOrderTotal(): string
     {
         return $this->getTotal($this->items);
     }
