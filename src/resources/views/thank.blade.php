@@ -2,7 +2,6 @@
 
 @section('content')
     @widget('breadcrumbs')
-
     <section class="checkout-section ptb-70">
         <div class="container">
             <div class="row">

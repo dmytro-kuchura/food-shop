@@ -196,4 +196,9 @@ class CatalogProductsRepository implements Repository
     {
         return $this->model::where('status', Common::STATUS_ACTIVE)->get();
     }
+
+    public function count()
+    {
+        return $this->model::count();
+    }
 }

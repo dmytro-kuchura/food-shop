@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\OrderItems;
+use App\Models\OrdersItems;
 
 trait OrderTotal
 {
@@ -10,7 +10,7 @@ trait OrderTotal
     {
         $total = 0.0;
 
-        /** @var OrderItems $item */
+        /** @var OrdersItems $item */
         foreach ($items as $item) {
             $total += $item->count * $item->cost;
         }

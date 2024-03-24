@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\ProfileController;
@@ -20,6 +21,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [SiteController::class, 'index'])->name('home');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard'); // done
+    Route::get('/catalog-categories', [AdminController::class, 'dashboard'])->name('admin.catalog.categories');
+    Route::get('/catalog-categories', [AdminController::class, 'dashboard'])->name('admin.catalog.categories');
+});
 
 Auth::routes();
 

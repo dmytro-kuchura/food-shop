@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\DeliveryController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +29,12 @@ Route::prefix('v1')->group(function () {
         Route::delete('delete/{item}', [CartController::class, 'delete'])->name('api.cart.delete');
         Route::post('update', [CartController::class, 'update'])->name('api.cart.update');
     });
+
+    Route::prefix('order')->group(function () {
+        Route::post('create', [OrderController::class, 'create'])->name('api.order.create');
+        Route::get('list', [OrderController::class, 'list'])->name('api.order.list');
+    });
+
+    Route::get('/deliveries', [DeliveryController::class, 'list'])->name('api.deliveries.list');
+    Route::get('/payments', [PaymentController::class, 'list'])->name('api.payments.list');
 });

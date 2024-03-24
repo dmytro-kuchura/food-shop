@@ -20,8 +20,8 @@ import axios from 'axios';
 window.axios = axios;
 
 axios.defaults.auth = {
-    username: 'admin',
-    password: 'secret'
+    username: import.meta.env.API_AUTH_USERNAME,
+    password: import.meta.env.API_AUTH_PASSWORD
 };
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

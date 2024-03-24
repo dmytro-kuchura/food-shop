@@ -14,11 +14,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Product $product
+ * @property CatalogProduct $product
  */
-class OrderItems extends Model
+class OrdersItems extends Model
 {
-    protected $table = 'order_items';
+    protected $table = 'orders_items';
 
     public $timestamps = true;
 
@@ -34,6 +34,6 @@ class OrderItems extends Model
 
     public function product(): HasOne
     {
-        return $this->hasOne('App\Models\Product', 'id', 'product_id');
+        return $this->hasOne('App\Models\CatalogProduct', 'id', 'product_id');
     }
 }

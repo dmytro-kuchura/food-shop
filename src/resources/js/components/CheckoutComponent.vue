@@ -64,21 +64,20 @@
                             <div class="input-box">
                                 <fieldset>
                                     <select name="delivery" class="option-drop" @change="selectDelivery($event)">
-                                        <option selected="" value="">Вариант доставки</option>
+                                        <option selected="" value="">Оберіть спосіб доставки</option>
                                         <option v-bind:value="delivery.id" v-for="delivery in deliveries">{{
                                                 delivery.name
                                             }}
                                         </option>
                                     </select>
                                 </fieldset>
-                                <span v-show="order.delivery_id === 1">Херсон, улица Крымская 137, район Днепровского рынка</span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-box select-dropdown">
                                 <fieldset>
                                     <select name="region" class="option-drop" @change="selectRegion($event)">
-                                        <option selected="" value="">Выберите область</option>
+                                        <option selected="" value="">Оберіть область</option>
                                         <option v-bind:value="region.id" v-for="region in regions">{{
                                                 region.name_ru
                                             }}
@@ -91,7 +90,7 @@
                             <div class="input-box select-dropdown">
                                 <fieldset>
                                     <select name="city" class="option-drop" @change="selectCity($event)">
-                                        <option value="">Выберите город</option>
+                                        <option value="">Оберіть місто</option>
                                         <option v-bind:value="city.id" v-for="city in cities">{{ city.name_ru }}
                                         </option>
                                     </select>
@@ -110,7 +109,7 @@
                             <div class="input-box">
                                 <fieldset>
                                     <select name="payment" class="option-drop" @change="selectPayment($event)">
-                                        <option selected="" value="">Вариант оплаты</option>
+                                        <option selected="" value="">Оберіть спосіб оплати</option>
                                         <option v-bind:value="payment.id" v-for="payment in payments">{{
                                                 payment.name
                                             }}
@@ -125,7 +124,7 @@
             <div class="col-xl-8 col-lg-7 mb-sm-30">
                 <div class="col-12 mb-20">
                     <div class="heading-part">
-                        <h3 class="sub-heading">Ваши товары</h3>
+                        <h3 class="sub-heading">Ваші товари</h3>
                     </div>
                     <hr>
                 </div>
@@ -134,10 +133,10 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Продукт</th>
-                                <th>Информация</th>
-                                <th>Итого</th>
-                                <th>Действия</th>
+                                <th></th>
+                                <th>Інформація</th>
+                                <th>Сума</th>
+                                <th>Дії</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -156,7 +155,7 @@
                                         <a v-bind:href="item.alias">{{ item.name }}</a>
                                         <div class="product-info-stock-sku m-0">
                                             <div>
-                                                <label>Цена: </label>
+                                                <label>Ціна: </label>
                                                 <div class="price-box"><span
                                                     class="info-deta price">₴ {{ item.price }}</span>
                                                 </div>
@@ -164,7 +163,7 @@
                                         </div>
                                         <div class="product-info-stock-sku m-0">
                                             <div>
-                                                <label>Кол-во: </label>
+                                                <label>Кіл-ть: </label>
                                                 <span class="info-deta">{{ item.count }}</span></div>
                                         </div>
                                     </div>
@@ -176,7 +175,7 @@
                                 </td>
                                 <td>
                                     <i class="fa fa-trash cart-remove-item" @click.prevent="removeFromCart(item.id)"
-                                       title="Удалить"></i>
+                                       title="Видалити"></i>
                                 </td>
                             </tr>
 
@@ -190,24 +189,12 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th colspan="2">Итого</th>
+                                <th colspan="2">Підсумок</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Всего за товары товаров</td>
-                                <td>
-                                    <div class="price-box"><span class="price">₴ {{ cart.totalPrice }}</span></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Доставка</td>
-                                <td>
-                                    <div class="price-box"><span class="price">$0.00</span></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b>К оплате</b></td>
+                                <td><b>До сплати</b></td>
                                 <td>
                                     <div class="price-box"><span class="price"><b>₴ {{ cart.totalPrice }}</b></span>
                                     </div>
@@ -217,11 +204,10 @@
                         </table>
                     </div>
                 </div>
-
             </div>
 
             <div class="col-md-12 mt-20 mt-xs-15">
-                <a @click.prevent="onSubmit()" class="btn btn-color right-side">Оформить</a>
+                <a @click.prevent="onSubmit()" class="btn btn-color right-side">Оформити</a>
             </div>
         </div>
     </div>
@@ -253,37 +239,38 @@ export default {
         }
     },
     mounted() {
-        if (this.$attrs.user.hasOwnProperty('id')) {
-            this.order.user_id = this.$attrs.user.id;
-            this.order.first_name = this.$attrs.user.name;
-            this.order.last_name = this.$attrs.user.last_name;
-            this.order.middle_name = this.$attrs.user.middle_name;
-            this.order.email = this.$attrs.user.email;
-            this.order.phone = this.$attrs.user.phone;
+        const user = JSON.parse(this.$attrs.user);
+        if (user.hasOwnProperty('id')) {
+            this.order.user_id = user.id;
+            this.order.first_name = user.name;
+            this.order.last_name = user.last_name;
+            this.order.middle_name = user.middle_name;
+            this.order.email = user.email;
+            this.order.phone = user.phone;
         }
 
         axios.get('api/v1/regions/list')
             .then(({data}) => this.setRegionsSuccessResponse(data))
             .catch((response) => this.setRegionsErrorResponse(response));
 
-        axios.get('api/v1/deliveries/list')
+        axios.get('api/v1/deliveries')
             .then(({data}) => this.setDeliveriesSuccessResponse(data))
             .catch((response) => this.setDeliveriesErrorResponse(response));
 
-        axios.get('api/v1/payments/list')
+        axios.get('api/v1/payments')
             .then(({data}) => this.setPaymentsSuccessResponse(data))
             .catch((response) => this.setPaymentsErrorResponse(response));
     },
     methods: {
         onSubmit() {
             this.isLoading = true;
-            axios.post('/api/v1/orders/create', this.order)
+            axios.post('/api/v1/order/create', this.order)
                 .then(() => this.setOnSubmitSuccessResponse())
                 .catch(({response}) => this.setOnSubmitErrorResponse(response));
         },
         setOnSubmitSuccessResponse() {
+            window.location.href = '/thank';
             this.isLoading = false;
-
             this.order.first_name = null;
             this.order.last_name = null;
             this.order.middle_name = null;
@@ -293,14 +280,11 @@ export default {
             this.order.region_id = null;
             this.order.city_id = null;
             this.order.payment_id = null;
-
             swal({
                 title: 'Оформлен!',
                 text: 'Ваш заказ был оформлен мы свяжемся с Вами в ближайшее время :)',
                 icon: 'success',
             });
-
-            window.location.href = '/thank';
         },
         setOnSubmitErrorResponse(response) {
             this.isLoading = false;
@@ -338,9 +322,7 @@ export default {
         },
         selectRegion(event) {
             let region = event.target.value;
-
             this.order.region_id = parseInt(region);
-
             axios.get('api/v1/cities/' + region)
                 .then(({data}) => this.setCitiesSuccessResponse(data))
                 .catch((response) => this.setCitiesErrorResponse(response));

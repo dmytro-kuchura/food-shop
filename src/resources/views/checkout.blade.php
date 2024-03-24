@@ -18,7 +18,7 @@
                                         <div class="line"></div>
                                         <div class="circle">1</div>
                                     </div>
-                                    <span>Оформление заказа</span>
+                                    <span>{{ __('static.checkout.checkout_step') }}</span>
                                 </a>
                             </li>
                             <li>
@@ -27,7 +27,7 @@
                                         <div class="line"></div>
                                         <div class="circle">2</div>
                                     </div>
-                                    <span>Завершение заказа</span>
+                                    <span>{{ __('static.checkout.finish_step') }}</span>
                                 </a>
                             </li>
                             <li>

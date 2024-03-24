@@ -125,15 +125,15 @@
                                                         <th colspan="4">
                                                             <ul>
                                                                 <li>
-                                                                    <span>Заказ создан</span>
-                                                                    <span>{{ $order->getRussianDate() }}</span>
+                                                                    <span>Замовлення створено</span>
+                                                                    <span>{{ $order->getUkrainianDate() }}</span>
                                                                 </li>
                                                                 <li class="price-box">
-                                                                    <span>Итого</span>
+                                                                    <span>Підсумок</span>
                                                                     <span class="price">₴ {{ $order->total }}</span>
                                                                 </li>
                                                                 <li>
-                                                                    <span>№ Заказа</span>
+                                                                    <span>№ Замовлення</span>
                                                                     <span>#{{ $order->id }}</span>
                                                                 </li>
                                                             </ul>
@@ -147,20 +147,20 @@
                                                                 <a href="{{ route('shop.item', ['alias' => $item->product->alias, 'id' => $item->product->id]) }}">
                                                                     <div class="product-image">
                                                                         <img
-                                                                            src="{{ $item->product->image ? $item->product->image : '/images/no-image.png' }}"
+                                                                            src="{{ $item->product->image ?? '/images/no-image.png' }}"
                                                                             alt="{{ $item->product->name }}">
                                                                     </div>
                                                                 </a>
                                                             </td>
                                                             <td>
                                                                 <div class="product-title">
-                                                                    <a href="product-page.html">
+                                                                    <a href="{{ route('shop.item', ['alias' => $item->product->alias, 'id' => $item->product->id]) }}">
                                                                         {{ $item->product->name }}
                                                                     </a>
                                                                 </div>
                                                                 <div class="product-info-stock-sku m-0">
                                                                     <div>
-                                                                        <label>Кол-во: </label>
+                                                                        <label>Кіл-ть: </label>
                                                                         <span
                                                                             class="info-deta">{{ $item->count }}</span>
                                                                     </div>

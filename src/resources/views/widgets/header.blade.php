@@ -1,19 +1,15 @@
 <header class="navbar navbar-custom container-full-sm" id="header">
     @auth
-        @if(Auth::user()->role == 2)
+        @if(Auth::user()->role == 'ADMIN')
             <div class="header-top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-6">
-                            <div class="top-left"></div>
-                        </div>
+                        <div class="col-6"></div>
                         <div class="col-6">
                             <div class="top-right-link right-side">
                                 <ul>
                                     <li class="info-link checkout-icon">
-                                        <a href="{{ route('dashboard') }}" title="{{ __('static.header.admin') }}">
-                                            <img src="{{ asset('/images/kubfood_logo.png') }}" alt="{{ __('static.header.admin') }}">{{ __('static.header.admin') }}
-                                        </a>
+                                        <a href="{{ route('admin.dashboard') }}" title="Checkout">{{ __('static.header.admin') }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -23,7 +19,6 @@
             </div>
         @endif
     @endauth
-
     <div class="header-middle">
         <div class="container position-s">
             <div class="row m-0">
@@ -54,9 +49,6 @@
                 <div class="col-xl-5 col-lg-4 col-6 col-xl-40per p-0">
                     <div class="right-side header-right-link">
                         <ul>
-                            <li class="search-box">
-                                <a><span></span></a>
-                            </li>
                             <li class="account-icon"><a href="javascript:void(0)"><span></span></a>
                                 <div class="header-link-dropdown account-link-dropdown">
                                     <ul class="link-dropdown-list">

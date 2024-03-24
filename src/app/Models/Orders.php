@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property OrderItems $items
+ * @property OrdersItems $items
  */
 class Orders extends Model
 {
@@ -45,10 +45,10 @@ class Orders extends Model
 
     public function items(): HasMany
     {
-        return $this->hasMany('App\Models\OrderItems', 'order_id');
+        return $this->hasMany('App\Models\OrdersItems', 'order_id');
     }
 
-    public function getRussianDate()
+    public function getUkrainianDate()
     {
         return $this->getHumanDate($this->created_at);
     }

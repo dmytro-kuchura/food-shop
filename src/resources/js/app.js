@@ -5,9 +5,6 @@
  */
 
 import './bootstrap';
-// import './vendor/jquery.downCount';
-// import 'jquery-ui';
-// import './vendor/jquery.magnific-popup';
 import './vendor/owl.carousel.min';
 import './vendor/custom';
 
@@ -30,7 +27,6 @@ import CheckoutComponent from './components/CheckoutComponent.vue';
 import ContactsFormComponent from './components/ContactsFormComponent.vue';
 import SubscribeFormComponent from './components/SubscribeFormComponent.vue';
 import MessagesComponent from './components/MessagesComponent.vue';
-
 
 Vue.component('loader', LoaderComponent);
 Vue.component('sortable', SortableComponent);

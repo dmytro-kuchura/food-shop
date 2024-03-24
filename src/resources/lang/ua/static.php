@@ -12,6 +12,7 @@ return [
     'widget.popular' => 'Популярні товари',
     'widget.sale' => 'Розпродаж',
     'widget.new' => 'Новинка',
+    'widget.latest_news' => 'Останні новини',
     'widget.news_title' => 'Останні новини',
     'widget.news_published' => 'Опублікував',
     'widget.news_author' => 'Адміністратор',
@@ -38,6 +39,10 @@ return [
 
     'cart.continue' => 'Продовжити покупки',
     'cart.checkout' => 'Оформити замовлення',
+
+    'checkout.checkout_step' => 'Оформлення замовлення',
+    'checkout.finish_step' => 'Завершення замовлення',
+    'checkout.submit' => 'Оформити',
 
     'catalog.description' => 'Опис',
     'catalog.specifications' => 'Характеристики',

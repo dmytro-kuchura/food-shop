@@ -18,13 +18,13 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->nullable();
             $table->integer('delivery')->nullable();
             $table->integer('payment')->nullable();
-            $table->integer('status')->default(0);
             $table->string('phone')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->nullable();
             $table->longText('comment')->nullable();
             $table->ipAddress('ip')->nullable();
+            $table->enum('status', ['CREATED', 'IN_WORK', 'COMPLETED', 'REJECTED', 'REFUNDED'])->default('CREATED');
             $table->timestamps();
         });
     }
